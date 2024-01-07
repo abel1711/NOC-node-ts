@@ -26,12 +26,11 @@ export class LogEntity {
     }
     static fromJson = (json: string): LogEntity => {
         const { message, level, createdAt, origin } = JSON.parse(json);
-        const log = new LogEntity({
+        return new LogEntity({
             message,
             level,
             origin,
             createdAt
         });
-        return log;
     }
 }

@@ -1,21 +1,23 @@
 import { CheckService } from "../domain/use-case/checks/check-service";
+import { SendLogsEmail } from "../domain/use-case/email/send-email-logs";
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource";
 import { LogRepositoryImpl } from "../infrastructure/repositories/log.repository.impl";
 import { CronService } from "./cron/cron-service";
 import { EmailService } from "./email/email.service";
 
 const fileSystemLogRepository = new LogRepositoryImpl(new FileSystemDatasource())
-
+const emailService = new EmailService();
 
 export class Server {
     public static start() {
         console.log('Server started...');
 
-        // const emailIsSend = new EmailService().sendEmail({
-        //     to: 'abelamieva@gmail.com',
-        //     subject: 'hola desde node',
-        //     htmlBody: `<h3>Hola desde Nodejs</h3>`
-        // });
+        // new SendLogsEmail(
+        //     emailService,
+        //     fileSystemLogRepository
+        // ).execute(
+        //     ['abelamieva@gmail.com']
+        // )
         // CronService.createJob(
         //     '*/5 * * * * *',
         //     () => {
