@@ -34,20 +34,20 @@ export class Server {
 
         // const logs = await logRepository.getLogs(LogSeverityLevel.high);
         // console.log(logs)
-        CronService.createJob(
-            '*/5 * * * * *',
-            () => {
-                const url = 'https://google.com';
-                new CheckServiceMultiple(
-                    [
-                        postgresLogRepository,
-                        mongoLogRepository,
-                        fsLogRepository,
-                    ],
-                    () => console.log(`${url} is ok`),
-                    (error) => console.log(error)
-                ).execute(url)
-            }
-        )
+        // CronService.createJob(
+        //     '*/5 * * * * *',
+        //     () => {
+        //         const url = 'https://google.com';
+        //         new CheckServiceMultiple(
+        //             [
+        //                 postgresLogRepository,
+        //                 mongoLogRepository,
+        //                 fsLogRepository,
+        //             ],
+        //             () => console.log(`${url} is ok`),
+        //             (error) => console.log(error)
+        //         ).execute(url)
+        //     }
+        // )
     }
 }

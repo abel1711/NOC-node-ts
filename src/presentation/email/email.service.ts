@@ -1,14 +1,14 @@
 import nodemailer from 'nodemailer';
 import { envs } from '../../config/plugins/envs.plugin';
 
-interface SendEmailOptions {
+export interface SendEmailOptions {
     to: string | string[];
     subject: string;
     htmlBody: string;
     attachments?: Attachements[];
 }
 
-interface Attachements {
+export interface Attachements {
     filename: string;
     path: string;
 }
@@ -36,8 +36,6 @@ export class EmailService {
                 html: htmlBody,
                 attachments
             });
-
-            console.log(sendInformation)
             return true
         } catch (error) {
             return false
